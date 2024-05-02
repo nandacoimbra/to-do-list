@@ -22,19 +22,14 @@
 
 }
 
-@font-face {
-    font-family: 'pretendo';
-    src: url('/webfonts/pretendo.woff2') format('woff2');
-}
-
 body {
 
     width: 80%;
     margin: 0 auto;
     background-color: var(--claro);
     height: 100%;
-    background-image: url("../imgs/");
-    background-color: #028090;
+    background-color: #2C5784;
+    font-family: "Rowdies", sans-serif;
 
 }
 
@@ -42,9 +37,29 @@ body {
 header {
     height: 10vh;
     display: flex;
-    justify-content: center;
-  
+    padding-left: 1rem;
+    /* justify-content: center; */
+    
+}
 
+header h1 span{
+    color: #FF499E;
+    
+}
+
+
+.date #current-date, 
+.date #current-day{
+    font-family: "Rowdies";
+    color: #5a5a5a;
+}
+ 
+.date #current-day{
+   margin-bottom: 0;
+   font-size: 2.2rem;
+}
+.date #current-date{
+   padding-top: 0;
 }
 
 
@@ -52,6 +67,9 @@ main {
     background-color: var(--main-color);
     min-height: 85vh;
     border-radius: 2rem;
+    border: 3px solid #FF499E;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
 }
 
 
@@ -59,11 +77,13 @@ main {
 .todo-title {
     font-family: "Rowdies";
     text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
     font-size: 2.5rem;
     color: var(--title);
-    padding-bottom: 2rem;
     height: 5rem;
-  
 }
 
 .date span{
@@ -101,14 +121,14 @@ main {
     width: 50%;
     height: 2rem;
     border-radius: .5rem;
-    background-color: #ffffff;
-    border-color: var(--input-color);
-    outline-color: #EA526F;
+    background-color: #F7F7F9;
+    border-color: #5A5A5A;
+    outline-color: #FF499E;
    
 }
 
 ::placeholder {
-    color: #999; /* Cor do placeholder */
+    color: #5A5A5A; /* Cor do placeholder */
   }
 
 
@@ -117,7 +137,7 @@ main {
     width: 2rem;
     height: auto;
     cursor: pointer;
-    color: var(--botoes-roxo);
+    color: #FF499E;
 }
 
 .add-task-button:hover {
@@ -143,7 +163,7 @@ main {
 }
 
 .task-item {
-    background-color: #E4FF1A;
+    background-color: #fddbeb;
     width: 100%;
     min-height: 2rem;
     display: flex;
@@ -153,41 +173,46 @@ main {
     padding: 0 .5rem;
     border-radius: .5rem;
     gap: .5rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .task-text{
     max-width: 100%;
     word-wrap: break-word;
     text-align: justify;
+    color: #5A5A5A;
 }
 
 .btn-container{
     display: flex;
     gap: 0.5rem;
+    padding: .3rem;
 
 }
 
 .task-item button {
     cursor: pointer;
     width: 2.5rem;
-    height: 1.5rem;
+    height: 2.5rem;
     border: 1px solid;
-    border-radius: .5rem;
+    border-radius: 50%;
+    color: #535353;
+    font-weight: bold;
 
 }
 
 .task-item button:hover {
-    color: orangered;
+    color: #FF499E;
 
 }
 
 #edit-background {
     position: fixed;
     top: 0;
-    background-color: #028090;
+    background-color: #2C5784;
     bottom: 0;
     left: 0;
-    opacity: 0.9;
+    opacity: 0.88;
     z-index: 100;
     right: 0;
     display: none;
@@ -200,7 +225,8 @@ main {
     top: 30%;
     left: 50%;
     transform: translate(-50%);
-    background-color: #EA526F;
+    background-color: #FBF5F3;
+    border: 3px solid #FF499E;
     padding: 2rem;
     border-radius: 1rem;
     z-index: 200;
@@ -217,8 +243,13 @@ main {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    border-color: #EA526F;
+    background-color: #414141;
+    color: #E4FDE1;
+    border: 1px solid transparent;
     cursor: pointer;
+}
+#edit-window-btn-close:hover{
+    background-color: #000F08;
 }
 
 form{
@@ -231,14 +262,20 @@ form{
     flex-direction: column;
     margin-bottom: 1rem;
 }
+
 .edit-window-section label{
     margin-bottom: .5rem;
 }
 .edit-window-section input{
     padding: .5rem;
     border-radius: .5rem;
-    border-color: #EA526F;
+    border-color: #535353;
     outline: none;
+}
+
+#id-task-edit, 
+.edit-window-section label{
+    color: #535353;
 }
 
 #btn-save-edit {
@@ -246,4 +283,11 @@ form{
     width: 50%;
     align-self: center;
     height: 2rem;
+    background-color: #FF499E;
+    color: #E4FDE1;
+    border: 1px solid transparent;
+}
+#btn-save-edit:hover {
+    background-color: #fd288c;
+    cursor: pointer;
 }
