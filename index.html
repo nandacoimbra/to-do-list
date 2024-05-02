@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Concert+One&family=Inter:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Rowdies:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <title>to do list</title>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="todo-title">my to-do list</h1>
+
+    </header>
+
+    <main>
+        <!-- <section class="day">
+            <div class="add-day">
+                <label for="">Adicionar dia</label>
+                <select name="" id="">
+                    <option value="0">selecione o dia</option>
+                    <option value="1">Segunda</option>
+                    <option value="2">Terça</option>
+                    <option value="3">Quarta</option>
+                    <option value="4">Quinta</option>
+                    <option value="5">Sexta</option>
+                    <option value="6">Sábado</option>
+                    <option value="7">Domingo</option>
+                </select>
+
+                <button>add</button>
+
+            </div>
+
+        </section> -->
+        <section class="date"><span id="current-day"></span>
+            <span id="current-date"></span>
+        </section>
+        <section class="add-task">
+
+            <!-- <label for="add-task-input">Adicionar Tarefa</label> -->
+            <input type="text" id="add-task-input" placeholder="Adicionar tarefa" required>
+            <button class="add-task-button"><i class="fa-solid fa-circle-plus "></i></button>
+        </section>
+
+        <ul class="tasks">
+
+        </ul>
+
+        <section id="edit-window">
+            <button id="edit-window-btn-close">
+                <i class="fa fa-remove"></i>
+            </button>
+
+            <h2 id="id-task-edit">id tarefa</h2>
+            <hr>
+            <form>
+                <div class="edit-window-section">
+                    <label for="edit-window-input">Tarefa</label>
+                    <input type="text" id="edit-window-input">
+                </div>
+                <div class="edit-window-section">
+                    <button id="btn-save-edit">Salvar</button>
+                </div>
+            </form>
+        </section>
+
+        <div id="edit-background"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

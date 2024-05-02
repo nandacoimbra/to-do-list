@@ -1,0 +1,249 @@
+:root {
+    --claro: #E4FDE1;
+    /* --background: #E4FDE1; */
+    --background: #E8F7EE;
+    /* --main-color: #279AF1; */
+    --main-color: #FBF5F3;
+    --input-color: #028090;
+    /* --cinza-manete: #8D8C9E;
+    --cinza-manete-claro: #C9C9D5;
+    --botoes-dark: #3C3D41;
+    --botoes-roxo: #584782;
+    --botoes-lilas: #A09DCC; */
+    --title: #FBF5F3;
+
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+
+}
+
+@font-face {
+    font-family: 'pretendo';
+    src: url('/webfonts/pretendo.woff2') format('woff2');
+}
+
+body {
+
+    width: 80%;
+    margin: 0 auto;
+    background-color: var(--claro);
+    height: 100%;
+    background-image: url("../imgs/");
+    background-color: #028090;
+
+}
+
+
+header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+  
+
+}
+
+
+main {
+    background-color: var(--main-color);
+    min-height: 85vh;
+    border-radius: 2rem;
+}
+
+
+
+.todo-title {
+    font-family: "Rowdies";
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--title);
+    padding-bottom: 2rem;
+    height: 5rem;
+  
+}
+
+.date span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0 0 0;
+    text-align: center;
+ 
+}
+
+#current-day{
+    font-size: 1.5rem;
+}
+#current-date{
+    font-size: .8rem;
+    margin-top: 0;
+}
+
+.add-task,
+.tasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.add-task {
+    padding: 1rem 0 0 0;
+    width: 100%;
+}
+
+#add-task-input {
+    width: 50%;
+    height: 2rem;
+    border-radius: .5rem;
+    background-color: #ffffff;
+    border-color: var(--input-color);
+    outline-color: #EA526F;
+   
+}
+
+::placeholder {
+    color: #999; /* Cor do placeholder */
+  }
+
+
+.add-task-button {
+    border-color: transparent;
+    width: 2rem;
+    height: auto;
+    cursor: pointer;
+    color: var(--botoes-roxo);
+}
+
+.add-task-button:hover {
+    color: var(--botoes-dark);
+
+}
+
+.add-task-button i {
+
+    font-size: 2rem;
+    cursor: pointer;
+    
+}
+
+.tasks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: first baseline;
+    justify-content: first baseline;
+    list-style: none;
+}
+
+.task-item {
+    background-color: #E4FF1A;
+    width: 100%;
+    min-height: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 .5rem;
+    border-radius: .5rem;
+    gap: .5rem;
+}
+
+.task-text{
+    max-width: 100%;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+.btn-container{
+    display: flex;
+    gap: 0.5rem;
+
+}
+
+.task-item button {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 1.5rem;
+    border: 1px solid;
+    border-radius: .5rem;
+
+}
+
+.task-item button:hover {
+    color: orangered;
+
+}
+
+#edit-background {
+    position: fixed;
+    top: 0;
+    background-color: #028090;
+    bottom: 0;
+    left: 0;
+    opacity: 0.9;
+    z-index: 100;
+    right: 0;
+    display: none;
+}
+#edit-background.open {
+    display: block !important;
+}
+#edit-window {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #EA526F;
+    padding: 2rem;
+    border-radius: 1rem;
+    z-index: 200;
+    display: none;
+}
+#edit-window.open {
+    display: block !important;
+}
+
+#edit-window-btn-close{
+    position: absolute;
+    top: -0.7rem;
+    right: -0.7rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border-color: #EA526F;
+    cursor: pointer;
+}
+
+form{
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.edit-window-section{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+.edit-window-section label{
+    margin-bottom: .5rem;
+}
+.edit-window-section input{
+    padding: .5rem;
+    border-radius: .5rem;
+    border-color: #EA526F;
+    outline: none;
+}
+
+#btn-save-edit {
+    border-radius: .5rem;
+    width: 50%;
+    align-self: center;
+    height: 2rem;
+}
