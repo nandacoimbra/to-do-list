@@ -7,6 +7,7 @@ const editBtnClose = document.querySelector("#edit-window-btn-close");
 const btnSaveTask = document.querySelector("#btn-save-edit");
 const idEditTask = document.querySelector("#id-task-edit");
 const editInput = document.querySelector("#edit-window-input");
+const CODIGO_ENTER = 13;
 
 
 function generateId() {
@@ -26,7 +27,6 @@ function createTask() {
     }
 
     createTags(task);
-
 
 }
 
@@ -66,9 +66,6 @@ function createTags(task) {
     //add a tarefa criada à ul
     tasks.appendChild(newTask);
     taskInput.value = "";
-
-
-
 }
 
 function excludeTask(taskId) {
@@ -106,7 +103,8 @@ btnAddTask.addEventListener("click", (e) => {
 
 taskInput.addEventListener("keypress", (e) => {
 
-    if (e.keyCode == 13) {
+    
+    if (e.keyCode == CODIGO_ENTER) {
 
         createTask();
     }
