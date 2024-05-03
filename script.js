@@ -1,5 +1,6 @@
 const taskInput = document.querySelector("#add-task-input");
 const btnAddTask = document.querySelector(".add-task-button");
+const btnCheckTask = document.querySelector(".checkTask");
 const tasks = document.querySelector(".tasks");
 const editWindow = document.querySelector('#edit-window');
 const editWindowBack = document.querySelector('#edit-background');
@@ -58,8 +59,13 @@ function createTags(task) {
     removeButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
     removeButton.setAttribute('onclick', 'excludeTask(' + task.id + ')');
 
+    let checkbox = document.createElement("button");
+    checkbox.classList.add("checkTask", "marked");
+    checkbox.innerHTML = '<i class="fa-solid fa-check"></i>';
+
     btnContainer.appendChild(editButton);
     btnContainer.appendChild(removeButton);
+    btnContainer.appendChild(checkbox);
     newTask.appendChild(taskText);
     newTask.appendChild(btnContainer);
 

@@ -142,7 +142,7 @@ main {
 
 .add-task-button:hover {
     color: var(--botoes-dark);
-
+    transition: 0.1s ease-in-out;
 }
 
 .add-task-button i {
@@ -185,12 +185,14 @@ main {
 
 .btn-container{
     display: flex;
+    align-items: center;
     gap: 0.5rem;
     padding: .3rem;
 
 }
 
-.task-item button {
+.task-item .remove-task, 
+.task-item .edit-task {
     cursor: pointer;
     width: 2.5rem;
     height: 2.5rem;
@@ -201,10 +203,37 @@ main {
 
 }
 
-.task-item button:hover {
-    color: #FF499E;
-
+.task-item .checkTask{
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid;
+    color: #535353;
 }
+
+.task-item .remove-task:hover, 
+.task-item .edit-task:hover
+{
+    background-color: #FF499E;
+}
+.task-item .checkTask:hover{
+    background-color: #329F5B; 
+}
+
+.task-item .remove-task:hover, 
+.task-item .edit-task:hover,
+.task-item .checkTask:hover
+{
+    border: 1px solid transparent;
+    color: #E4FDE1;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+
+/* .task-item .marked {
+    color: #E4FDE1;
+    background-color: #1B998B;   
+} */
 
 #edit-background {
     position: fixed;
