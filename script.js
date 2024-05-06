@@ -10,11 +10,15 @@ const idEditTask = document.querySelector("#id-task-edit");
 const editInput = document.querySelector("#edit-window-input");
 const CODIGO_ENTER = 13;
 
+//carrega as tarefas salvas no localStorage
+loadTasks();
 
+//gera um id aleatório para cada task
 function generateId() {
     return Math.floor(Math.random() * 1000);
 }
 
+//cria nova task
 function createTask() {
 
     if (taskInput.value == "" || taskInput.value == null) {
@@ -24,10 +28,13 @@ function createTask() {
 
     let task = {
         text: taskInput.value,
-        id: generateId()
+        id: generateId(),
+        completed: false
     }
 
     createTags(task);
+    //salva task no localStorage
+    saveTasks();
 
 }
 
@@ -60,8 +67,14 @@ function createTags(task) {
     removeButton.setAttribute('onclick', 'excludeTask(' + task.id + ')');
 
     let checkbox = document.createElement("button");
-    checkbox.classList.add("checkTask", "marked");
+    checkbox.classList.add("checkTask");
     checkbox.innerHTML = '<i class="fa-solid fa-check"></i>';
+    checkbox.setAttribute('onclick', 'markTask');
+
+    checkbox.addEventListener("click", (e) => {
+        let checkedTask = newTask;
+        markTask(checkbox, checkedTask);
+    })
 
     btnContainer.appendChild(editButton);
     btnContainer.appendChild(removeButton);
@@ -74,13 +87,49 @@ function createTags(task) {
     taskInput.value = "";
 }
 
+//salva tasks no localStorage
+function saveTasks() {
+    //busca todos os li do html
+    const taskElements = document.querySelectorAll('.task-item');
+    const tasks = [];
+    taskElements.forEach(taskElement => {
+        const id = parseInt(taskElement.id);
+        const text = taskElement.querySelector('.task-text').textContent;
+        const completed = taskElement.classList.contains('line');
+        tasks.push({ id, text, completed});
+    });
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+//carrega as tasks salvas no localStorage
+function loadTasks() {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (savedTasks) {
+        savedTasks.forEach(task => {
+            createTags(task);
+            //verifica se completed = true (tarefa finalizada)
+            //para aplicar os estilos correspondentes
+            if(task.completed) {
+                const taskElement = document.getElementById(task.id);
+                taskElement.querySelector('.checkTask').classList.add('marked');
+                taskElement.classList.add('line');
+        
+            }
+        });
+    }
+}
+
+
 function excludeTask(taskId) {
+    //confirmacao do navegador se o usuario deseja excluir (nao aparece no live preview)
     let confirmation = window.confirm('Deseja excluir a tarefa?');
 
     if (confirmation) {
         let li = document.getElementById('' + taskId + '');
         if (li) {
             tasks.removeChild(li);
+            saveTasks();
         } else {
             alert("Elemento HTML não encontrado");
         }
@@ -95,6 +144,7 @@ function editTask(taskId) {
         idEditTask.innerHTML = '#' + taskId + '';
         editInput.value = li.innerText;
         shiftEditWindow();
+        
 
     } else {
         alert("Elemento HTML não encontrado");
@@ -109,7 +159,7 @@ btnAddTask.addEventListener("click", (e) => {
 
 taskInput.addEventListener("keypress", (e) => {
 
-    
+
     if (e.keyCode == CODIGO_ENTER) {
 
         createTask();
@@ -124,27 +174,36 @@ editBtnClose.addEventListener("click", (e) => {
 function shiftEditWindow() {
     editWindow.classList.toggle('open');
     editWindowBack.classList.toggle('open');
-};
+};    
 
 btnSaveTask.addEventListener("click", (e) => {
+
     e.preventDefault();
     let idTask = parseInt(idEditTask.innerHTML.replace('#', ''));
-
     let taskText = editInput.value;
-
     let currentTask = document.getElementById('' + idTask + '');
 
     if (currentTask) {
 
         let taskSpan = currentTask.querySelector('.task-text');
-
-        if(taskSpan){
+        
+        if (taskSpan) {
             taskSpan.textContent = taskText;
             shiftEditWindow();
-        }
-       
-       
-    }
+            saveTasks();
+        }    
+    }    
+    
+})            
 
-})
+
+function markTask(btn,checkedTask) {
+    btn.classList.toggle('marked');
+    checkedTask.classList.toggle('line');
+    checkedTask.check = true;
+    saveTasks();
+} 
+
+
+
 

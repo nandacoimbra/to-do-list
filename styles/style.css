@@ -81,9 +81,10 @@ main {
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
+    padding: .2rem;
     font-size: 2.5rem;
     color: var(--title);
-    height: 5rem;
+    height: 4rem;
 }
 
 .date span{
@@ -176,6 +177,12 @@ main {
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
+.line{
+   text-decoration: line-through;
+   opacity: 0.8;
+   background-color: #a5a5a5;
+}
+
 .task-text{
     max-width: 100%;
     word-wrap: break-word;
@@ -215,6 +222,7 @@ main {
 {
     background-color: #FF499E;
 }
+
 .task-item .checkTask:hover{
     background-color: #329F5B; 
 }
@@ -229,11 +237,12 @@ main {
     transition: 0.1s ease-in-out;
 }
 
+.task-item .marked {
+ 
+    background-color: #329F5B !important;   
+    color: #E4FDE1 !important; 
+} 
 
-/* .task-item .marked {
-    color: #E4FDE1;
-    background-color: #1B998B;   
-} */
 
 #edit-background {
     position: fixed;
@@ -320,3 +329,15 @@ form{
     background-color: #fd288c;
     cursor: pointer;
 }
+
+@media screen and (max-width: 390px) {
+    
+    .todo-title{
+
+        font-size: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    
+    }
+  }
