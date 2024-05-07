@@ -135,6 +135,8 @@ function excludeTask(taskId) {
         }
     }
 }
+
+//editar task
 function editTask(taskId) {
 
     let li = document.getElementById('' + taskId + '');
@@ -151,12 +153,13 @@ function editTask(taskId) {
     }
 }
 
-
+//botão add task
 btnAddTask.addEventListener("click", (e) => {
     createTask();
 
 })
 
+//possibilita incluir a tarefa pressionando o enter
 taskInput.addEventListener("keypress", (e) => {
 
 
@@ -167,15 +170,18 @@ taskInput.addEventListener("keypress", (e) => {
 
 })
 
+//btn de fechar a janela de edicao
 editBtnClose.addEventListener("click", (e) => {
     shiftEditWindow();
 })
 
+//funcao que habilita tela de edicao
 function shiftEditWindow() {
     editWindow.classList.toggle('open');
     editWindowBack.classList.toggle('open');
 };    
 
+//btn salvar task após edicao
 btnSaveTask.addEventListener("click", (e) => {
 
     e.preventDefault();
@@ -196,7 +202,7 @@ btnSaveTask.addEventListener("click", (e) => {
     
 })            
 
-
+//altera o estado completede da task
 function markTask(btn,checkedTask) {
     btn.classList.toggle('marked');
     checkedTask.classList.toggle('line');
