@@ -19,7 +19,6 @@
     padding: 0;
     margin: 0;
 
-
 }
 
 body {
@@ -35,16 +34,24 @@ body {
 
 
 header {
-    height: 10vh;
+    min-height: 4rem;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     padding-left: 1rem;
-    /* justify-content: center; */
+    width: 100%;
+    justify-content: flex-start;
+    gap: 1rem;
     
 }
 
-header h1 span{
-    color: #FF499E;
-    
+header .daily-pink{
+    color: #FF499E;   
+    font-size: 3rem;
+}
+header .todo-title-white{
+    color: #E4FDE1;   
+    font-size: 3rem;
 }
 
 
@@ -72,20 +79,6 @@ main {
     margin-top: .5rem;
 }
 
-
-
-.todo-title {
-    font-family: "Rowdies";
-    text-align: center;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    padding: .2rem;
-    font-size: 2.5rem;
-    color: var(--title);
-    height: 4rem;
-}
 
 .date span{
     display: flex;
@@ -330,14 +323,19 @@ form{
     cursor: pointer;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 450px) {
     
-    .todo-title{
 
-        font-size: 2rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-size: .8rem;
     
+    }
+    header {
+       
+        justify-content: center;
+        
     }
   }
